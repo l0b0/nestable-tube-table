@@ -1,6 +1,7 @@
 // CONFIGURATION
 
-table_width = 50; // Total sizes
+// Outer dimensions
+table_width = 50;
 table_depth = 30;
 table_height = 20;
 
