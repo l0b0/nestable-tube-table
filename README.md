@@ -9,6 +9,11 @@ Previews
 * [Single table](table.stl)
 * [Double table](tables.stl)
 
+Nesting tables
+--------------
+
+There's example code at the end of [`table.scad`](table.scad) to create an inner table (as seen in the [double table](tables.stl) preview). This can be tweaked and repeated for successively smaller tables.
+
 Configuration
 -------------
 
