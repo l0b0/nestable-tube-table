@@ -6,6 +6,8 @@ OpenSCAD model of a nestable tube table, based on [Tested](http://tested.com)'s 
 Configuration
 -------------
 
+You can configure all the important measurements [at the top of `table.scad`](table.scad#L1-L16):
+
 * Table width: `table_width`
 * Table depth: `table_depth`
 * Table height: `table_height`
@@ -13,3 +15,5 @@ Configuration
 * Tube thickness: `tube_thickness`
 * Tube gauge: `tube_gauge`
 * Tube corner radius: `tube_corner_radius`
+
+You can tweak these to fit your material dimensions and ergonomic needs. The rest of the file takes care of fitting the pieces together automatically.
