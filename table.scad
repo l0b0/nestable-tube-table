@@ -17,8 +17,6 @@ $fn = 20;
 
 // CALCULATIONS
 
-table_x_size = table_width;
-table_y_size = table_depth;
 table_z_size = table_height;
 
 foot_rest_z_position = foot_rest_height - tube_thickness;
@@ -41,7 +39,7 @@ module leg() {
     }
 }
 
-module legs() {
+module legs(table_x_size, table_y_size) {
     union() {
         translate([tube_thickness, tube_thickness, 0]) {
             leg();
@@ -58,7 +56,7 @@ module legs() {
     }
 }
 
-module width_bar() {
+module width_bar(table_x_size) {
     difference() {
         translate([0, tube_corner_radius, tube_corner_radius]) {
             minkowski() {
@@ -74,18 +72,18 @@ module width_bar() {
     }
 }
 
-module width_bars() {
+module width_bars(table_x_size) {
     union() {
         translate([0, 0, foot_rest_z_position]) {
-            width_bar();
+            width_bar(table_x_size);
         }
         translate([0, 0, table_z_size - tube_thickness]) {
-            width_bar();
+            width_bar(table_x_size);
         }
     }
 }
 
-module depth_bar() {
+module depth_bar(table_y_size) {
     difference() {
         translate([tube_corner_radius, 0, tube_corner_radius]) {
             minkowski() {
@@ -101,29 +99,29 @@ module depth_bar() {
     }
 }
 
-module depth_bars() {
+module depth_bars(table_x_size, table_y_size) {
     union() {
         translate([0, tube_thickness, foot_rest_z_position]) {
-            depth_bar();
+            depth_bar(table_y_size);
         }
         translate([table_x_size - tube_thickness, tube_thickness, foot_rest_z_position]) {
-            depth_bar();
+            depth_bar(table_y_size);
         }
         translate([0, tube_thickness, table_z_size - tube_thickness]) {
-            depth_bar();
+            depth_bar(table_y_size);
         }
         translate([table_x_size - tube_thickness, tube_thickness, table_z_size - tube_thickness]) {
-            depth_bar();
+            depth_bar(table_y_size);
         }
     }
 }
 
-module table() {
-    color("Blue") legs();
-    color("Orange") width_bars();
-    color("Green") depth_bars();
+module table(table_x_size, table_y_size) {
+    color("Blue") legs(table_x_size, table_y_size);
+    color("Orange") width_bars(table_x_size);
+    color("Green") depth_bars(table_x_size, table_y_size);
 }
 
 // MODULES END
 
-table();
+table(table_width, table_depth);
