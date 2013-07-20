@@ -127,6 +127,6 @@ module table(table_x_size, table_y_size) {
 table(table_width, table_depth);
 
 // Inner table example
-translate([2.5 * tube_thickness, 2 * tube_thickness, 0]) {
-    color("Yellow") table(table_width - 5 * tube_thickness, table_depth - tube_thickness);
+% translate([2.5 * tube_thickness, 2 * tube_thickness, 0]) {
+    table(table_width - 5 * tube_thickness, table_depth - tube_thickness);
 }
