@@ -1,4 +1,4 @@
-nestable-tube-table
+Nestable Tube Table
 ===================
 
 [OpenSCAD](http://www.openscad.org/) model of a nestable tube table, based on [Tested](http://tested.com)'s [Jamie Hyneman On Welding in His Workshop video](http://www.youtube.com/watch?v=EA1jeViV4l8&t=10m58s). Really simple, sturdy table which can be cut out of square steel tubes and welded together quickly.
