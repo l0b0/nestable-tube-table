@@ -11,6 +11,8 @@ tube_thickness = 1;
 tube_gauge = 1/8;
 tube_corner_radius = 1/8;
 
+qr_code = false; // Include QR code with link to Thingiverse
+
 $fn = 20;
 
 // CONFIGURATION END
@@ -73,12 +75,27 @@ module width_bar(table_x_size) {
 }
 
 module width_bars(table_x_size) {
+    include <qr_code.scad>;
+
     union() {
         translate([0, 0, foot_rest_z_position]) {
             width_bar(table_x_size);
         }
         translate([0, 0, table_z_size - tube_thickness]) {
-            width_bar(table_x_size);
+            difference() {
+                width_bar(table_x_size);
+                if (qr_code) {
+                    translate([tube_corner_radius, 0, tube_corner_radius]) { // Position on bar
+                        scale(v = [(tube_thickness - 2 * tube_corner_radius) / (qr_code_size + 2), (tube_thickness - 2 * tube_corner_radius) / (qr_code_size + 2), (tube_thickness - 2 * tube_corner_radius) / (qr_code_size + 2)]) { // + 2 for a frame
+                            rotate(a = [90, 0, 0]) { // To be used in XZ plane
+                                translate([qr_code_size / 2, qr_code_size / 2 + 0.5, 0]) { // Move corner to [0, 0.5, 0]
+                                    qr_code();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
