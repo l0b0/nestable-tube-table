@@ -22,6 +22,7 @@ foot_rest_z_position = foot_rest_height - tube_thickness;
 // CALCULATIONS END
 
 // MODULES
+
 module leg() {
     difference() {
         cube(size = [tube_thickness, tube_thickness, table_z_size]);
