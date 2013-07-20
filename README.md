@@ -11,3 +11,4 @@ Configuration
 * Table height: `table_height`
 * Foot rest height: `foot_rest_height`
 * Tube thickness: `tube_thickness`
+* Tube gauge: `tube_gauge`
