@@ -118,9 +118,9 @@ module depth_bars() {
 }
 
 module table() {
-    legs();
-    width_bars();
-    depth_bars();
+    color("Blue") legs();
+    color("Orange") width_bars();
+    color("Green") depth_bars();
 }
 
 // MODULES END
