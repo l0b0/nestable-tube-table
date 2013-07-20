@@ -12,3 +12,4 @@ Configuration
 * Foot rest height: `foot_rest_height`
 * Tube thickness: `tube_thickness`
 * Tube gauge: `tube_gauge`
+* Tube corner radius: `tube_corner_radius`

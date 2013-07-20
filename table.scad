@@ -8,6 +8,9 @@ foot_rest_height = 5; // Height of the *top*
 
 tube_thickness = 1;
 tube_gauge = 1/8;
+tube_corner_radius = 1/8;
+
+$fn = 20;
 
 // CONFIGURATION END
 
@@ -25,7 +28,12 @@ foot_rest_z_position = foot_rest_height - tube_thickness;
 
 module leg() {
     difference() {
-        cube(size = [tube_thickness, tube_thickness, table_z_size]);
+        translate([tube_corner_radius, tube_corner_radius, 0]) {
+            minkowski() {
+                cube(size = [tube_thickness - tube_corner_radius * 2, tube_thickness - tube_corner_radius * 2, table_z_size]);
+                cylinder(r = tube_corner_radius, h = 0.01);
+            }
+        }
         translate([tube_gauge, tube_gauge, -1]) {
             cube(size = [tube_thickness - tube_gauge * 2, tube_thickness - tube_gauge * 2, table_z_size + 2]);
         }
@@ -51,7 +59,14 @@ module legs() {
 
 module width_bar() {
     difference() {
-        cube(size = [table_x_size, tube_thickness, tube_thickness]);
+        translate([0, tube_corner_radius, tube_corner_radius]) {
+            minkowski() {
+                cube(size = [table_x_size, tube_thickness - tube_corner_radius * 2, tube_thickness - tube_corner_radius * 2]);
+                rotate(a=[0,90,0]) {
+                    cylinder(r = tube_corner_radius, h = 0.01);
+                }
+            }
+        }
         translate([-1, tube_gauge, tube_gauge]) {
             cube(size = [table_x_size + 2, tube_thickness - tube_gauge * 2, tube_thickness - tube_gauge * 2]);
         }
@@ -71,7 +86,14 @@ module width_bars() {
 
 module depth_bar() {
     difference() {
-        cube(size = [tube_thickness, table_y_size - tube_thickness, tube_thickness]);
+        translate([tube_corner_radius, 0, tube_corner_radius]) {
+            minkowski() {
+                cube(size = [tube_thickness - tube_corner_radius * 2, table_y_size - tube_thickness, tube_thickness - tube_corner_radius * 2]);
+                rotate(a=[90,0,0]) {
+                    cylinder(r = tube_corner_radius, h = 0.01);
+                }
+            }
+        }
         translate([tube_gauge, -1, tube_gauge]) {
             cube(size = [tube_thickness - tube_gauge * 2, table_y_size + 2, tube_thickness - tube_gauge * 2]);
         }
