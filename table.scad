@@ -120,6 +120,11 @@ module table(table_x_size, table_y_size) {
     color("Blue") legs(table_x_size, table_y_size);
     color("Orange") width_bars(table_x_size);
     color("Green") depth_bars(table_x_size, table_y_size);
+
+    echo (str("Inventory:"));
+    echo (str("2 x ", table_x_size, " for table width bars"));
+    echo (str("4 x ", table_y_size - tube_thickness, " for table depth bars"));
+    echo (str("4 x ", table_z_size, " for legs"));
 }
 
 // MODULES END
